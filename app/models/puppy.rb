@@ -13,4 +13,15 @@
 #
 
 class Puppy < ActiveRecord::Base
+
+  COLORS = %w(red blue golden chocolate black turquoise)
+  GENDERS = %w(M F)
+
+  validates :birth_date, :color, :name, :sex, :description, presence: true
+  validates :color, inclusion: COLORS
+  validates :sex, inclusion: GENDERS
+
+  def age
+    (Date.today - birth_date).to_i / 365
+  end
 end

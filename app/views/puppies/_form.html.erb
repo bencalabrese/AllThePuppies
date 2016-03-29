@@ -1,6 +1,9 @@
 
-<form action="<%= puppy_url(puppy) %>" method="post">
-  <input type="hidden" name="_method" value="patch">
+<% pped = puppy.persisted? %>
+
+<form action="<%= pped ? puppy_url(puppy) : puppies_url %>"
+      method="post">
+  <input type="hidden" <%= 'name="_method" value="patch"' if pped %>>
 
   <label for="puppy_name">Name</label>
   <input type="text"
@@ -40,9 +43,7 @@
 
   <label for="puppy_name">Description</label>
   <textarea id="puppy_description"
-            name="puppy[description]">
-    <%= puppy.description %>
-  </textarea>
+            name="puppy[description]"><%= puppy.description %></textarea>
 
   <br/>
   <input type="submit" value="MAKE ME MY PUPPY">

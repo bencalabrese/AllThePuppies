@@ -19,8 +19,8 @@
   </br>
 
   <label for="puppy_name">Sex</label>
-    <%Puppy::GENDERS.each do |gender|%>
-      <input type="radio" name="puppy[sex]" value="<%=gender%>"><%=gender%></input>
+    <%Puppy::SEXES.each do |sex|%>
+      <input type="radio" name="puppy[sex]" value="<%=sex%>"><%=sex%></input>
     <%end%>
   </br>
 

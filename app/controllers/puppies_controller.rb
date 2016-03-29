@@ -13,4 +13,10 @@ class PuppiesController < ApplicationController
   def new
     render :new
   end
+
+  def edit
+    @puppy = Puppy.find(params[:id])
+    render :edit
+  end
+
 end

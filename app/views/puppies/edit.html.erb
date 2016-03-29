@@ -1,38 +1,4 @@
 <h1>Edit your puppy!</h1>
 <h3>Make changes below</h3>
 
-<form action="<%= puppy_url(@puppy) %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-
-  <label for="puppy_name">Name</label>
-  <input type="text" id="puppy_name" name="puppy[name]" value="<%= @puppy.name %>">
-  </br>
-
-  <label for="puppy_birth_date">Birth Date</label>
-  <input type="date" id="puppy_birth_date" name="puppy[birth_date]" value="<%= @puppy.birth_date %>">
-  </br>
-
-  <label for="puppy_color">Color</label>
-  <select name="puppy[color]">
-    <%Puppy::COLORS.each do |color|%>
-      <option value= "<%=color%>" <%= 'selected' if @puppy.color == color %>>
-        <%=color.capitalize%>
-      </option>
-    <%end%>
-  </select>
-  </br>
-
-  <label for="puppy_name">Sex</label>
-    <%Puppy::SEXES.each do |sex|%>
-      <input type="radio" name="puppy[sex]" value="<%=sex%>" <%= 'checked' if @puppy.sex == sex %>>
-        <%=sex%>
-      </input>
-    <%end%>
-  </br>
-
-  <label for="puppy_name">Description</label>
-  <textarea id="puppy_description" name="puppy[description]"><%= @puppy.description %></textarea>
-
-  <br/>
-  <input type="submit" value="MAKE ME MY PUPPY">
-</form>
+<%= render "form", puppy: @puppy %>

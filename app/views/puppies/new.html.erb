@@ -1,0 +1,32 @@
+<h1>Make a new puppy!</h1>
+<h3>Input details below</h3>
+
+<form action="/puppies" method="post">
+  <label for="puppy_name">Name</label>
+  <input type="text" id="puppy_name" name="puppy[name]">
+  </br>
+
+  <label for="puppy_birth_date">Birth Date</label>
+  <input type="date" id="puppy_birth_date" name="puppy[birth_date]">
+  </br>
+
+  <label for="puppy_color">Color</label>
+  <select name="puppy[color]">
+    <%Puppy::COLORS.each do |color|%>
+      <option value="<%=color%>"><%=color.capitalize%></option>
+    <%end%>
+  </select>
+  </br>
+
+  <label for="puppy_name">Sex</label>
+    <%Puppy::GENDERS.each do |gender|%>
+      <input type="radio" name="puppy[sex]" value="<%=gender%>"><%=gender%></input>
+    <%end%>
+  </br>
+
+  <label for="puppy_name">Description</label>
+  <textarea id="puppy_description" name="puppy[description]"></textarea>
+
+  <br/>
+  <input type="submit" value="MAKE ME MY PUPPY">
+</form>

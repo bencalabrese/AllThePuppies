@@ -22,6 +22,6 @@ class Puppy < ActiveRecord::Base
   validates :sex, inclusion: GENDERS
 
   def age
-    (Date.today - birth_date).to_i / 365
+    @age = (Date.today - birth_date).to_i / 365
   end
 end

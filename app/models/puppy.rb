@@ -24,4 +24,6 @@ class Puppy < ActiveRecord::Base
   def age
     @age = (Date.today - birth_date).to_i / 365
   end
+
+  has_many :puppy_rental_requests, dependent: :destroy
 end

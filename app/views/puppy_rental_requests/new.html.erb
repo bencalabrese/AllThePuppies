@@ -1,0 +1,34 @@
+<h1>Request a puppy!</h1>
+
+<form action="<%= puppy_rental_requests_url %>"
+      method="post">
+
+  <label for="puppy_ids">Pick a puppy</label>
+  <select name="puppy_rental_request[puppy_id]">
+    <%Puppy.all.each do |puppy|%>
+      <option value= "<%=puppy.id%>"
+              <%= 'selected' if puppy.id == @request.puppy_id %>>
+        <%=puppy.name%>
+      </option>
+    <%end%>
+  </select>
+  </br>
+
+  <label for="rental_start_date">Start Date</label>
+  <input type="date"
+         id="rental_start_date"
+         name="puppy_rental_request[start_date]"
+         value="<%= @request.start_date %>">
+  </br>
+
+  <label for="rental_end_date">End Date</label>
+  <input type="date"
+         id="rental_end_date"
+         name="puppy_rental_request[end_date]"
+         value="<%= @request.end_date %>">
+  </br>
+
+  <input type="submit" value="RENT ME MY PUPPY">
+
+
+</form>

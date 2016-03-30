@@ -5,6 +5,13 @@ class PuppyRentalRequest < ActiveRecord::Base
   validates :puppy_id, :start_date, :end_date, :status, presence: true
   validates :status, inclusion: STATUSES
 
+  validate :does_not_overlap_with_approved_request
+
+  def does_not_overlap_with_approved_request
+    unless overlapping_approved_requests.empty?
+      errors[:base] << "Can't overlap with an approved request"
+    end
+  end
   # def date_range
   #   (start_date..end_date)
   # end
@@ -30,4 +37,6 @@ class PuppyRentalRequest < ActiveRecord::Base
       request.status == "APPROVED"
     end
   end
+
+  belongs_to :puppy
 end

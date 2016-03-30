@@ -1,0 +1,2 @@
+module PuppyRentalRequestsHelper
+end
